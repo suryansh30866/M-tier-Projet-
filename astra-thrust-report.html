@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Astra Thrust Labs — Business Summary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --surface:#f8f9fa; --pill:#f1f3f9; --ink:#0d0e10; --muted:#5f6368; --line:#e3e5e8;
+  --blue:#1a73e8; --blue-d:#0b3d91; --good:#188038; --bad:#d93025; --warn:#f29900;
+  --r-lg:32px; --r-md:20px; --r-sm:14px;
+  --font:"Inter","Google Sans","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;font-size:17px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+h1,h2,h3{font-weight:400;letter-spacing:-.035em;line-height:1.05}
+.dim{color:var(--muted)}
+
+/* header */
+header.top{position:absolute;top:0;left:0;right:0;z-index:30;padding:18px 0}
+.top .wrap{display:flex;align-items:center;gap:28px}
+.brand{font-size:22px;letter-spacing:-.03em;display:flex;align-items:center;gap:8px;font-weight:500}
+.brand .chev{width:26px;height:26px;border-radius:50%;background:var(--pill);display:grid;place-items:center}
+.brand svg{width:12px;height:12px}
+.top nav{display:flex;gap:30px;margin-left:56px;font-size:17px;font-weight:400}
+.top nav a:hover{color:var(--blue)}
+.top .actions{margin-left:auto;display:flex;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 26px;font:500 17px var(--font);cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);transition:.2s;white-space:nowrap}
+.btn:hover{box-shadow:0 2px 14px rgba(0,0,0,.09);transform:translateY(-1px)}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.soft{background:linear-gradient(90deg,#f3f6ff,#dfe9ff);border-color:#e1e8f8}
+.btn.sm{padding:9px 20px;font-size:16px}
+
+/* hero */
+.hero-wrap{padding:96px clamp(12px,3vw,32px) 0}
+.hero{position:relative;background:var(--surface);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:64px 24px 0}
+.eyebrow{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.hero h1{font-size:clamp(64px,12vw,176px);font-weight:500;letter-spacing:-.06em;line-height:.95}
+.hero p.sub{font-size:clamp(20px,2.4vw,32px);color:#3c4043;margin-top:20px;letter-spacing:-.02em;max-width:900px;position:relative;z-index:2}
+.hero .cta{display:flex;gap:12px;justify-content:center;z-index:3;flex-wrap:wrap;padding:0 16px;margin-top:34px;position:relative}
+.engine-art{display:block;width:min(1080px,100%);margin-top:30px;transition:transform .25s ease-out}
+.engine-art .lbl text{font:500 13px var(--font);fill:#5f6368;text-anchor:middle}
+.flame{transform-box:fill-box;transform-origin:0 50%;animation:flick .22s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scaleX(.93) scaleY(.97)}to{transform:scaleX(1.03) scaleY(1.03)}}
+@media(prefers-reduced-motion:reduce){.flame{animation:none}}
+@media(max-width:700px){.engine-art .lbl{display:none}}
+.pcard .art,.tcard .art{position:relative;overflow:hidden}
+
+/* rail (explore the latest) */
+.rail-head{display:flex;align-items:center;justify-content:space-between;padding:34px 0 18px}
+.rail-head span{color:var(--muted);font-size:18px}
+.arrows{display:flex;background:var(--pill);border-radius:999px;padding:4px}
+.arrows button{width:56px;height:46px;border:0;background:transparent;border-radius:999px;cursor:pointer;display:grid;place-items:center;transition:.2s}
+.arrows button:hover{background:#e6eaf5}
+.arrows svg{width:18px;height:18px}
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:8px}
+.rail::-webkit-scrollbar{display:none}
+.hcard{flex:0 0 min(340px,80vw);scroll-snap-align:start;border-radius:var(--r-md);padding:30px;min-height:230px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden}
+.hcard .n{font-size:clamp(44px,5vw,64px);letter-spacing:-.05em;font-weight:500;line-height:1}
+.hcard .l{font-size:17px;opacity:.92}
+.hcard:nth-child(1){background:linear-gradient(135deg,#0b3d91,#1a73e8)}
+.hcard:nth-child(2){background:linear-gradient(135deg,#0d0e10,#2b3a67)}
+.hcard:nth-child(3){background:linear-gradient(135deg,#1a73e8,#6aa7ff)}
+.hcard:nth-child(4){background:linear-gradient(135deg,#1c1f2b,#0b57d0)}
+.hcard:nth-child(5){background:linear-gradient(135deg,#3b5bdb,#9db7ff)}
+.hcard::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.09)}
+
+/* statement */
+.statement{max-width:1100px;margin:clamp(70px,10vw,140px) auto;text-align:center;font-size:clamp(30px,4.4vw,60px);letter-spacing:-.045em;line-height:1.08;font-weight:400}
+
+/* sticky tabs */
+.tabs-holder{position:sticky;top:14px;z-index:40;display:flex;justify-content:center;pointer-events:none;height:0}
+.tabs{pointer-events:auto;display:flex;gap:4px;background:rgba(241,243,249,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:6px;border-radius:999px;box-shadow:0 4px 24px rgba(20,30,70,.08);max-width:calc(100vw - 24px);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{padding:12px 24px;border-radius:999px;font-size:17px;white-space:nowrap;transition:.25s;color:#202124}
+.tabs a:hover{background:#e6eaf5}
+.tabs a.on{background:var(--ink);color:#fff}
+
+/* sections */
+section{padding:clamp(80px,11vw,150px) 0 0;scroll-margin-top:20px}
+.sec-head{font-size:clamp(40px,5.6vw,84px);letter-spacing:-.05em;max-width:1100px}
+.sec-head .dim{display:block}
+.sec-num{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:block}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:44px;color:#3c4043}
+.cols.offset{grid-template-columns:1fr 1fr 1fr}
+.cols.offset>:first-child{grid-column:2}
+.cols p+p{margin-top:14px}
+.grid{display:grid;gap:20px;margin-top:56px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--surface);border-radius:var(--r-md);padding:30px;transition:.25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(20,30,70,.07)}
+.card h3{font-size:24px;letter-spacing:-.03em;margin-bottom:10px;font-weight:500}
+.card p{color:var(--muted);font-size:16px}
+.card .ic{width:46px;height:46px;border-radius:14px;background:#fff;display:grid;place-items:center;margin-bottom:22px;font-weight:600;color:var(--blue);font-size:18px}
+.tag{display:inline-block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.price{font-size:34px;letter-spacing:-.04em;font-weight:500;margin:14px 0 4px}
+ul.clean{list-style:none;margin-top:14px}
+ul.clean li{padding:9px 0;border-top:1px solid var(--line);font-size:16px;color:#3c4043;display:flex;gap:10px}
+ul.clean li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);margin-top:10px;flex:none}
+
+/* product art */
+.pcard{border-radius:var(--r-md);overflow:hidden;background:var(--surface)}
+.pcard .art{height:230px;position:relative;overflow:hidden}
+.pcard .body{padding:28px 30px 32px}
+.pcard h3{font-size:28px;font-weight:500;letter-spacing:-.04em}
+.art svg{position:absolute;inset:0;width:100%;height:100%}
+.a-blue{background:linear-gradient(135deg,#0b3d91,#1a73e8)}
+.a-dark{background:radial-gradient(circle at 70% 30%,#2b4cff55,transparent 55%),#0f1117}
+.a-sky{background:linear-gradient(135deg,#cfe0ff,#8db4ff)}
+
+/* configurator */
+.config{background:var(--surface);border-radius:var(--r-lg);padding:clamp(24px,4vw,56px);margin-top:56px;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px)}
+.config h3{font-size:clamp(28px,3vw,40px);letter-spacing:-.04em;font-weight:500;margin-bottom:8px}
+.q{margin-top:26px}
+.q label{display:block;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:11px 20px;border-radius:999px;background:#fff;border:1px solid var(--line);cursor:pointer;font:400 16px var(--font);transition:.2s}
+.chip:hover{border-color:#bcc3d1}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--ink);height:4px}
+.rv{display:flex;justify-content:space-between;font-size:16px;margin-top:8px;color:var(--muted)}.rv b{color:var(--ink);font-weight:500}
+.result{background:#fff;border-radius:var(--r-md);padding:30px;display:flex;flex-direction:column;gap:6px}
+.result .rt{font-size:30px;letter-spacing:-.04em;font-weight:500}
+.badge{display:inline-block;padding:6px 14px;border-radius:999px;font-size:14px;font-weight:500;width:fit-content}
+.badge.ok{background:#e6f4ea;color:var(--good)}.badge.lease{background:#fff4e0;color:#b06000}
+.result table{margin-top:10px}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;margin-top:30px;border-radius:var(--r-md);border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:16px;min-width:620px}
+th{font-weight:500;text-align:left;color:var(--muted);font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:16px 20px;background:var(--surface)}
+td{padding:15px 20px;border-top:1px solid var(--line)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:600;background:#fafbfc}
+.neg{color:var(--bad)}.pos{color:var(--good)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+.d-l{background:var(--good)}.d-m{background:var(--warn)}.d-h{background:var(--bad)}
+
+/* market */
+.market{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;margin-top:56px}
+.market svg{width:100%;max-width:520px;margin:auto;display:block}
+
+/* timeline cards */
+.tl{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:56px;padding-bottom:6px}
+.tl::-webkit-scrollbar{display:none}
+.tcard{flex:0 0 min(400px,82vw);scroll-snap-align:start}
+.tcard .art{aspect-ratio:16/11;border-radius:var(--r-md);margin-bottom:22px}
+.tcard .date{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.tcard h3{font-size:22px;letter-spacing:-.03em;font-weight:500;line-height:1.2;margin-bottom:10px}
+.tcard p{color:var(--muted);font-size:16px}
+.t1{background:linear-gradient(135deg,#eceff4,#cfd6e4)}
+.t2{background:radial-gradient(circle at 25% 30%,#ff5252 0,transparent 30%),radial-gradient(circle at 70% 60%,#3d5afe 0,transparent 38%),radial-gradient(circle at 50% 85%,#00e5ff 0,transparent 30%),#0b0d14}
+.t3{background:conic-gradient(from 30deg at 50% 60%,#ffc400,#34a853,#7e57c2,#ea4335,#ffc400)}
+.t4{background:linear-gradient(135deg,#e8d9ff,#b79cff 50%,#ff9eb5)}
+.t5{background:radial-gradient(circle at 30% 70%,#1a73e8,transparent 50%),radial-gradient(circle at 75% 25%,#00bcd4,transparent 45%),#0f1b3d}
+.t6{background:linear-gradient(135deg,#ffe082,#ff8a65 60%,#d84315)}
+
+/* finance */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.kpi{background:var(--surface);border-radius:var(--r-md);padding:24px}
+.kpi .v{font-size:clamp(28px,3vw,40px);letter-spacing:-.045em;font-weight:500}
+.kpi .k{font-size:14px;color:var(--muted);margin-top:4px}
+.model{display:grid;grid-template-columns:300px 1fr;gap:24px;margin-top:24px}
+.sliders{background:var(--surface);border-radius:var(--r-md);padding:26px}
+.sliders .s{margin-bottom:26px}.sliders .s:last-child{margin-bottom:0}
+.sliders label{font-size:14px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:10px}
+.sliders label b{color:var(--ink);font-weight:500}
+.chart{background:var(--surface);border-radius:var(--r-md);padding:26px}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:22px;font-size:14px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:8px;vertical-align:-1px}
+.fund{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.donut-box{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.donut{width:210px;height:210px;flex:none}
+.leg{list-style:none;font-size:16px;flex:1;min-width:200px}
+.leg li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.leg i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:10px}
+.stack{height:46px;border-radius:14px;overflow:hidden;display:flex;margin:22px 0 14px}
+.stack div{height:100%;display:grid;place-items:center;color:#fff;font-size:14px;font-weight:500}
+.note{font-size:14px;color:var(--muted);margin-top:16px}
+
+/* toc */
+.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:50px;border-top:1px solid var(--line)}
+.toc a{padding:22px 18px 22px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:baseline;transition:.2s}
+.toc a:hover{color:var(--blue);padding-left:8px}
+.toc small{color:var(--muted);font-size:14px;width:26px}
+
+/* conclusion + footer */
+.closing{background:var(--ink);color:#fff;border-radius:var(--r-lg);padding:clamp(34px,6vw,90px);margin-top:clamp(80px,11vw,150px);text-align:center}
+.closing h2{font-size:clamp(34px,5vw,72px);letter-spacing:-.05em;max-width:980px;margin:0 auto}
+.closing p{color:#b6bcc9;max-width:700px;margin:24px auto 34px}
+.closing .btn.light{background:#fff;color:var(--ink)}
+footer{padding:60px 0 50px;color:var(--muted);font-size:15px}
+footer .row{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
+footer b{color:var(--ink);font-weight:500}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:1000px){
+  .top nav{display:none}.top .actions .btn:first-child{display:none}
+  .g3,.g4{grid-template-columns:1fr 1fr}.cols,.cols.offset,.config,.market,.fund{grid-template-columns:1fr}
+  .cols.offset>:first-child{grid-column:auto}.kpis{grid-template-columns:1fr 1fr}.model{grid-template-columns:1fr}.toc{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  body{font-size:16px}.g2,.g3,.g4,.toc{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}
+  .hero{padding-bottom:210px}.tabs a{padding:10px 16px;font-size:15px}.btn{padding:12px 20px;font-size:16px}
+}
+@media print{
+  header.top,.tabs-holder,.arrows,.sliders,.hero .cta{display:none!important}
+  .hero{min-height:auto;padding:80px 24px}.hero-wrap{padding-top:0}
+  .reveal{opacity:1!important;transform:none!important}
+  section{padding-top:50px;page-break-inside:avoid}.card,.tcard,.pcard,.kpi,.chart{break-inside:avoid}
+  .rail,.tl{flex-wrap:wrap;overflow:visible}.closing{background:#fff;color:#000;border:1px solid #ccc}.closing p{color:#444}
+  @page{size:A4;margin:14mm}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <linearGradient id="g-metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9fc"/><stop offset=".45" stop-color="#d3d9e3"/><stop offset="1" stop-color="#8f98a8"/></linearGradient>
+  <linearGradient id="g-metal-d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9c1ce"/><stop offset="1" stop-color="#5d6678"/></linearGradient>
+  <linearGradient id="g-copper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2b68a"/><stop offset=".5" stop-color="#c47a49"/><stop offset="1" stop-color="#7d4727"/></linearGradient>
+  <linearGradient id="g-glow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1a73e8" stop-opacity=".5"/><stop offset="1" stop-color="#5b9bff" stop-opacity="0"/></linearGradient>
+  <linearGradient id="g-flame" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff3b0"/><stop offset=".4" stop-color="#ffb74d" stop-opacity=".9"/><stop offset="1" stop-color="#ff7043" stop-opacity="0"/></linearGradient>
+  <linearGradient id="g-core" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#fff8e1" stop-opacity="0"/></linearGradient>
+  <filter id="f-blur" x="-10%" y="-40%" width="130%" height="180%"><feGaussianBlur stdDeviation="7"/></filter>
+  <pattern id="p-grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#fff" stroke-opacity=".75"/></pattern>
+</defs></svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Astra Thrust Labs <span class="chev"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg></span></a>
+    <nav>
+      <a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#market">Market</a><a href="#financials">Financials</a>
+    </nav>
+    <div class="actions">
+      <button class="btn sm" onclick="window.print()">Save as PDF</button>
+      <a class="btn sm" href="#configurator"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.6 6.6 5.4 11.4 12 12-6.6.6-11.4 5.4-12 12-.6-6.6-5.4-11.4-12-12C6.600 11.400 11.400 6.600 12 0z"/></svg>Try the configurator</a>
+    </div>
+  </div>
+</header>
+
+<div id="top" class="hero-wrap">
+  <div class="hero">
+    <span class="eyebrow">Métier Projet · Preliminary Round · Business Idea Summary</span>
+    <h1>Astra Thrust</h1>
+    <p class="sub">Accelerating breakthroughs in propulsion research with engines built for campuses.</p>
+    <div class="cta">
+      <a class="btn dark" href="#overview">Read the summary</a>
+      <a class="btn soft" href="#financials">Explore the financials</a>
+    </div>
+    <svg class="engine-art" id="heroArt" viewBox="0 0 1000 322" role="img" aria-label="Illustration of a hybrid rocket engine firing on a test stand"></svg>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="rail-head"><span>Report highlights</span>
+    <div class="arrows"><button aria-label="Previous" id="prev"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4l-6 6 6 6"/></svg></button><button aria-label="Next" id="next"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4l6 6-6 6"/></svg></button></div>
+  </div>
+  <div class="rail" id="rail">
+    <div class="hcard"><div class="n">₹1.5 Cr</div><div class="l">Estimated start-up capital needed to launch</div></div>
+    <div class="hcard"><div class="n" data-kpi="rev5">–</div><div class="l">Projected 5-year revenue (idea-stage estimate)</div></div>
+    <div class="hcard"><div class="n" data-kpi="be">–</div><div class="l">Operating break-even point</div></div>
+    <div class="hcard"><div class="n">3</div><div class="l">Engine &amp; test-stand classes: Spark, Vega and Orion</div></div>
+    <div class="hcard"><div class="n" data-kpi="cust5">–</div><div class="l">Colleges and labs we aim to serve by Year 5</div></div>
+  </div>
+
+  <div class="statement reveal" id="overview">Astra Thrust gives colleges the one thing propulsion research has always lacked: real engines to test, learn from and rebuild.</div>
+</div>
+
+<main>
+<div class="tabs-holder"><nav class="tabs" id="tabs">
+  <a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#market">Market</a><a href="#business">Business model</a><a href="#execution">Execution</a><a href="#financials">Financials</a><a href="#risks">Risks</a>
+</nav></div>
+
+<div class="wrap">
+
+<!-- Contents -->
+<section style="padding-top:0" class="reveal">
+  <span class="sec-num">Contents</span>
+  <h2 class="sec-head">Executive summary<span class="dim">in one page.</span></h2>
+  <div class="cols">
+    <p>Astra Thrust Labs is a business idea: to design, build and supply safe, reusable hybrid rocket engines and boosters, instrumented test stands and ready-to-teach curriculum to engineering colleges and research labs, either to buy or to rent. Instead of one-off, hand-built hardware, an institution gets a complete propulsion lab it can run, measure and extend.</p>
+    <p>We estimate that ₹1.5 crore is needed to build a test facility, a small rental fleet and three product classes, and to serve a first group of six institutions. In the base case the idea reaches operating break-even in Year 3 and about ₹5.7 crore of annual revenue in Year 5 (roughly ₹14.6 crore over five years), with recurring support, consumables and rentals making up a growing share. These are idea-stage estimates, not results.</p>
+  </div>
+  <div class="toc">
+    <a href="#problem"><small>01</small>The problem</a><a href="#solution"><small>02</small>Our solution</a><a href="#market"><small>03</small>Market &amp; competition</a><a href="#business"><small>04</small>Business model</a>
+    <a href="#execution"><small>05</small>Implementation</a><a href="#execution"><small>06</small>Execution roadmap</a><a href="#financials"><small>07</small>Funding</a><a href="#financials"><small>08</small>Revenue &amp; profit</a>
+    <a href="#risks"><small>09</small>Risks &amp; safety</a><a href="#close"><small>10</small>Conclusion</a>
+  </div>
+</section>
+
+<!-- Problem -->
+<section id="problem" class="reveal">
+  <span class="sec-num">01 · The problem</span>
+  <h2 class="sec-head">Propulsion is taught on slides, not on test stands.<span class="dim"></span></h2>
+  <div class="cols offset">
+    <p>Rocket propulsion sits at the heart of aerospace engineering, yet many students can graduate without ever seeing an engine fire under measurement. The equations are in the textbook; the hardware, the instrumentation and the safe place to use them are not on campus.</p>
+    <p>Colleges that want to change this meet the same wall: engines are expensive to import, slow to custom-build, and nobody on staff has the safety training to run them. Student teams burn a year building something that is never properly tested.</p>
+  </div>
+  <div class="grid g4">
+    <div class="card"><div class="ic">₹</div><h3>High cost</h3><p>Test-grade engines and sensors are priced for space agencies, not departments with a small lab budget.</p></div>
+    <div class="card"><div class="ic">⏱</div><h3>Long lead times</h3><p>Imports and custom fabrication stretch into many months, longer than a student's project window.</p></div>
+    <div class="card"><div class="ic">!</div><h3>Safety burden</h3><p>Few colleges have trained staff, protected test bays or clear procedures for running propulsion hardware.</p></div>
+    <div class="card"><div class="ic">≠</div><h3>Fragmented supply</h3><p>No single vendor offers engine, test stand, data tools and curriculum together for education.</p></div>
+  </div>
+</section>
+
+<!-- Solution -->
+<section id="solution" class="reveal">
+  <span class="sec-num">02 · Our solution</span>
+  <h2 class="sec-head">An engine, a test stand and a syllabus.<span class="dim">Delivered to your campus.</span></h2>
+  <div class="cols">
+    <p>We supply hybrid rocket engines, which keep fuel and oxidiser separate until firing and can be throttled or shut down on command. That makes them a more forgiving platform for teaching and research than most alternatives, and they are reusable across many test runs.</p>
+    <p>Every engine ships with a calibrated static test stand, data-acquisition software, a safety manual, lab experiments mapped to the aerospace syllabus and on-site training for faculty. Institutions with specific needs can order a custom configuration. Colleges that do not want to buy can rent engines, boosters and test stands by the month or for a single test campaign.</p>
+  </div>
+  <div class="grid g3">
+    <div class="pcard reveal">
+      <div class="art a-sky" data-art="spark"></div>
+      <div class="body"><span class="tag">Starter lab</span><h3>Spark</h3><p class="dim">Instrumented static test stand with thrust and pressure sensing, DAQ and software. Run any compatible motor, or learn on our demo rig.</p><div class="price">₹4 L</div><span class="dim" style="font-size:14px">per unit · target ~6 weeks<br>Rent from ~₹0.2 L / month</span></div>
+    </div>
+    <div class="pcard reveal">
+      <div class="art a-blue" data-art="vega"></div>
+      <div class="body"><span class="tag">Education &amp; competitions</span><h3>Vega</h3><p class="dim">Reusable 500 N-class hybrid engine for teaching labs and student rocketry teams. Throttle and shutdown control built in.</p><div class="price">₹9 L</div><span class="dim" style="font-size:14px">per unit · target ~10 weeks<br>Rent from ~₹0.45 L / month</span></div>
+    </div>
+    <div class="pcard reveal">
+      <div class="art a-dark" data-art="orion"></div>
+      <div class="body"><span class="tag">Funded research</span><h3>Orion</h3><p class="dim">Research-grade 5 kN-class engine configured with each lab's faculty for propulsion studies, thesis work and funded projects.</p><div class="price">₹35 L</div><span class="dim" style="font-size:14px">from · target ~16 weeks<br>Rent from ~₹1.75 L / month</span></div>
+    </div>
+  </div>
+
+  <p class="note">Prices, rents and delivery times are planned targets for the idea stage and would be confirmed after prototyping.</p>
+
+  <div class="config reveal" id="configurator">
+    <div>
+      <span class="tag">Interactive</span>
+      <h3>Which engine fits your college?</h3>
+      <p class="dim">Tell us what you need. The configurator suggests a package, and shows the price to buy or the monthly rent.</p>
+      <div class="q"><label>Main purpose</label>
+        <div class="chips" id="c-purpose">
+          <button class="chip on" data-v="teach">Teaching lab</button><button class="chip" data-v="comp">Student competition</button><button class="chip" data-v="res">Funded research</button>
+        </div></div>
+      <div class="q"><label>Buy or rent</label>
+        <div class="chips" id="c-mode"><button class="chip on" data-v="buy">Buy</button><button class="chip" data-v="rent">Rent</button></div></div>
+      <div class="q"><label>Available budget</label>
+        <input type="range" id="c-budget" min="3" max="60" step="1" value="15">
+        <div class="rv"><span>₹3 L</span><b id="c-budget-v">₹15 L</b><span>₹60 L</span></div></div>
+    </div>
+    <div class="result" id="c-result"></div>
+  </div>
+</section>
+
+<!-- Market -->
+<section id="market" class="reveal">
+  <span class="sec-num">03 · Market &amp; competition</span>
+  <h2 class="sec-head">Many students learn propulsion on paper.<span class="dim">We want them to learn it on a stand.</span></h2>
+  <div class="market">
+    <svg viewBox="0 0 520 440" role="img" aria-label="Market funnel: TAM, SAM, SOM">
+      <circle cx="260" cy="230" r="205" fill="#eef3fd"/><circle cx="260" cy="290" r="140" fill="#cfe0ff"/><circle cx="260" cy="350" r="78" fill="#1a73e8"/>
+      <text x="260" y="70" text-anchor="middle" font-size="17" fill="#0d0e10" font-family="Inter,sans-serif">TAM · all engineering institutions</text>
+      <text x="260" y="196" text-anchor="middle" font-size="17" fill="#0d0e10" font-family="Inter,sans-serif">SAM · those with aerospace / mechanical</text>
+      <text x="260" y="212" text-anchor="middle" font-size="17" fill="#0d0e10" font-family="Inter,sans-serif">research or rocketry clubs</text>
+      <text x="260" y="346" text-anchor="middle" font-size="28" fill="#fff" font-weight="500" font-family="Inter,sans-serif">SOM</text>
+      <text x="260" y="372" text-anchor="middle" font-size="16" fill="#fff" font-family="Inter,sans-serif">Year-5 goal: ~125</text>
+    </svg>
+    <div>
+      <p class="dim">Our first customers would be the aerospace, mechanical and mechatronics departments of engineering colleges, universities and research institutes that already run rocketry clubs or propulsion electives. Competitions and funded student projects could create steady demand for hardware, and for rentals around event dates.</p>
+      <ul class="clean">
+        <li><span><b>Beachhead:</b> departments with an active rocketry club or propulsion course.</span></li>
+        <li><span><b>Expansion:</b> universities, polytechnics and state research labs.</span></li>
+        <li><span><b>Adjacent:</b> private research groups needing small, test-ready engines.</span></li>
+      </ul>
+      <p class="note">The market is described by who we plan to serve, not by measured figures. Sizes would be validated through customer interviews during the pilot phase.</p>
+    </div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Alternative</th><th>Strength</th><th>Gap Astra Thrust fills</th></tr>
+    <tr><td>Imported research engines</td><td>Proven performance</td><td>Expensive, slow to arrive, no local training or curriculum</td></tr>
+    <tr><td>Student-built DIY engines</td><td>Cheap, hands-on</td><td>Inconsistent quality, weak safety record, little reliable data</td></tr>
+    <tr><td>Simulation software</td><td>Low cost, safe</td><td>No physical validation; students never touch real hardware</td></tr>
+    <tr><td><b>Astra Thrust</b></td><td><b>Engine + stand + data + syllabus</b></td><td><b>Safe, local, reusable, supported</b></td></tr>
+  </table></div>
+</section>
+
+<!-- Business model -->
+<section id="business" class="reveal">
+  <span class="sec-num">04 · Business model</span>
+  <h2 class="sec-head">Sell the hardware once.<span class="dim">Earn from the lab every year.</span></h2>
+  <div class="grid g3">
+    <div class="card"><h3>Hardware sales</h3><p>Spark, Vega and Orion units sold directly to institutions, the main source of Year 1–2 revenue.</p></div>
+    <div class="card"><h3>Rent engines &amp; boosters</h3><p>Colleges rent engines, boosters and test stands by the month or for one test campaign, with no large upfront cost. Hardware is inspected and refurbished between rentals, so one unit can earn many times.</p></div>
+    <div class="card"><h3>Annual support &amp; consumables</h3><p>Service plan, calibration, oxidiser refills and spare parts, a recurring stream that grows with every customer.</p></div>
+    <div class="card"><h3>Custom engineering</h3><p>Project-based work for research labs needing special configurations, priced per project.</p></div>
+    <div class="card"><h3>Training &amp; curriculum</h3><p>Faculty workshops, lab manuals and certification for student teams.</p></div>
+    <div class="card"><h3>Competition partnerships</h3><p>Aim to be the engine and stand partner for student rocketry events, a low-cost way to reach many colleges, with rentals sized to the event.</p></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Unit economics (Vega)</th><th class="num">₹ lakh</th></tr>
+    <tr><td>Selling price</td><td class="num">9.0</td></tr>
+    <tr><td>Cost of goods (materials, machining, assembly, testing)</td><td class="num">4.9</td></tr>
+    <tr class="total"><td>Gross margin (≈ 45%)</td><td class="num">4.1</td></tr>
+    <tr><td>Rental price if rented (about 5% of selling price per month)</td><td class="num">0.45 / month</td></tr>
+    <tr><td>Months of rent to recover cost of goods, before refurbishment</td><td class="num">≈ 11 months</td></tr>
+  </table></div>
+  <div class="cols">
+    <div><h3 style="font-size:26px;margin-bottom:12px;font-weight:500">Go-to-market</h3>
+      <ul class="clean"><li>Direct outreach to heads of aerospace and mechanical departments.</li><li>Demo roadshow with a portable Spark stand at partner colleges.</li><li>Official partnerships with student rocketry competitions.</li><li>Faculty workshops that convert into purchase orders.</li></ul></div>
+    <div><h3 style="font-size:26px;margin-bottom:12px;font-weight:500">Pricing logic</h3>
+      <ul class="clean"><li>Priced to fit common department lab budgets and grants.</li><li>Rental (about 5% of the purchase price per month, minimum 3 months) removes the capital-expense barrier.</li><li>Service plan priced at about ₹1.2 L per year per institution.</li><li>Bundles of engine plus stand discounted against separate purchase.</li></ul></div>
+  </div>
+</section>
+
+<!-- Execution -->
+<section id="execution" class="reveal">
+  <span class="sec-num">05 · Implementation &amp; execution</span>
+  <h2 class="sec-head">From first test bay<span class="dim">to a national campus network.</span></h2>
+  <div class="grid g3">
+    <div class="card"><h3>Facility</h3><p>A leased workshop with a protected, remotely operated test bay for acceptance testing of every engine before shipment.</p></div>
+    <div class="card"><h3>Supply chain</h3><p>Machining and electronics sourced from local vendors with in-house assembly, calibration and quality control.</p></div>
+    <div class="card"><h3>Team</h3><p>Planned team: the founders, plus a propulsion engineer, a safety officer and a technical sales lead hired in Year 1.</p></div>
+  </div>
+  <div class="tl" id="tl">
+    <div class="tcard"><div class="art t1" data-art="bp"></div><div class="date">Q4 2026</div><h3>Company set-up and advisory board</h3><p>Register the company, apply for start-up grants, and seek two faculty advisers from aerospace departments.</p></div>
+    <div class="tcard"><div class="art t2" data-art="bay"></div><div class="date">Q1 2027</div><h3>Test facility and Vega prototype</h3><p>Fit out the workshop and test bay, complete the first Vega engine and review it with an external safety expert.</p></div>
+    <div class="tcard"><div class="art t3" data-art="stand"></div><div class="date">Q2 2027</div><h3>Pilot with three colleges</h3><p>Aim to place Spark and Vega at partner institutions, by sale or short-term rental, and collect feedback on use, safety and curriculum.</p></div>
+    <div class="tcard"><div class="art t4" data-art="kit"></div><div class="date">Q3 2027</div><h3>Commercial launch</h3><p>Open sales and rentals for Spark and Vega and aim to reach six institutions by year end.</p></div>
+    <div class="tcard"><div class="art t5" data-art="orion"></div><div class="date">2028</div><h3>Orion research engine</h3><p>Develop the 5 kN-class engine, begin custom projects and rent boosters for larger test campaigns, aiming for about 20 institutions in total.</p></div>
+    <div class="tcard"><div class="art t6" data-art="net"></div><div class="date">2029 – 2031</div><h3>Scale across India</h3><p>Regional service hubs, competition partnerships and an online practical-lab platform for remote learners.</p></div>
+  </div>
+</section>
+
+<!-- Financials -->
+<section id="financials" class="reveal">
+  <span class="sec-num">06 · Funding · 07 · Revenue &amp; profit</span>
+  <h2 class="sec-head">₹1.5 crore needed to launch.<span class="dim">Break-even in Year 3 in the base case.</span></h2>
+  <div class="cols">
+    <p>This is the funding plan we intend to follow: our own contribution, government start-up grants we would apply for, and angel investment we would seek. Nothing is raised or committed yet. Roughly half goes into the test facility and tooling that make every future engine repeatable and safe.</p>
+    <p>The revenue model below is live: change the sliders and every figure, table and chart updates. All numbers are in ₹ lakh (100 lakh = ₹1 crore) and are idea-stage estimates, not results.</p>
+  </div>
+
+  <div class="fund">
+    <div class="card">
+      <h3>Planned sources of funds</h3>
+      <div class="stack">
+        <div style="width:13.3%;background:#0d0e10">20</div><div style="width:33.4%;background:#1a73e8">50</div><div style="width:53.3%;background:#6aa7ff">80</div>
+      </div>
+      <ul class="leg"><li><span><i style="background:#0d0e10"></i>Founders' contribution (planned)</span><b>₹20 L</b></li><li><span><i style="background:#1a73e8"></i>Government start-up grants (to apply for)</span><b>₹50 L</b></li><li><span><i style="background:#6aa7ff"></i>Angel investment (to seek)</span><b>₹80 L</b></li><li><span><b>Total requirement</b></span><b>₹150 L</b></li></ul>
+    </div>
+    <div class="card">
+      <h3>Planned use of funds</h3>
+      <div class="donut-box"><svg class="donut" id="donut" viewBox="0 0 200 200"></svg><ul class="leg" id="donut-leg"></ul></div>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v" data-kpi="rev5">–</div><div class="k">5-year revenue</div></div>
+    <div class="kpi"><div class="v" data-kpi="ebitda5">–</div><div class="k">Year 5 operating profit</div></div>
+    <div class="kpi"><div class="v" data-kpi="be">–</div><div class="k">Operating break-even</div></div>
+    <div class="kpi"><div class="v" data-kpi="trough">–</div><div class="k">Deepest cumulative operating loss</div></div>
+  </div>
+
+  <div class="model">
+    <div class="sliders">
+      <div class="s"><label>Average hardware order <b id="o-aov">₹12 L</b></label><input type="range" id="aov" min="6" max="20" step="0.5" value="12"></div>
+      <div class="s"><label>Hardware gross margin <b id="o-gm">45%</b></label><input type="range" id="gm" min="30" max="60" step="1" value="45"></div>
+      <div class="s"><label>Customer retention <b id="o-ret">80%</b></label><input type="range" id="ret" min="50" max="95" step="1" value="80"></div>
+      <div class="s"><label>New-college growth <b id="o-mult">100%</b></label><input type="range" id="mult" min="50" max="150" step="5" value="100"></div>
+      <div class="s"><label>Customers who rent <b id="o-rent">25%</b></label><input type="range" id="rent" min="0" max="60" step="5" value="25"></div>
+    </div>
+    <div class="chart">
+      <div class="legend"><span><i style="background:#1a73e8"></i>Revenue</span><span><i style="background:#188038"></i>Operating profit</span><span><i style="background:#d93025"></i>Operating loss</span></div>
+      <svg id="chart" viewBox="0 0 800 340" role="img" aria-label="Revenue and operating profit by year"></svg>
+    </div>
+  </div>
+
+  <div class="tbl-wrap"><table id="fin">
+    <thead><tr><th>₹ lakh</th><th class="num">Year 1</th><th class="num">Year 2</th><th class="num">Year 3</th><th class="num">Year 4</th><th class="num">Year 5</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="note">All figures are idea-stage estimates, not results. Assumptions: hardware revenue = buying colleges × average order. Support and consumables = ₹1.2 L per retained buyer per year at a 70% margin. Rental = about ₹3.6 L per renting college per year (roughly ₹0.6 L a month for 6 months) at a 60% margin after refurbishing the rental fleet. Operating costs (team, facility, marketing, R&amp;D) grow from ₹60 L in Year 1 to ₹220 L in Year 5. Profit after tax uses a simplified 25% tax on positive operating profit, before depreciation and interest.</p>
+</section>
+
+<!-- Risks -->
+<section id="risks" class="reveal">
+  <span class="sec-num">08 · Risks &amp; safety</span>
+  <h2 class="sec-head">Safety first.<span class="dim">It is the product.</span></h2>
+  <div class="cols">
+    <p>Propulsion hardware is only valuable to a college if it is safe to run. We design around that: hybrid engines that can be shut off, remotely operated test bays, written procedures, mandatory training and supply only to accredited institutions under a usage agreement.</p>
+    <p>Rules for handling propulsion hardware and its materials vary and change, so licensing and compliance with the relevant Indian authorities will be confirmed with legal counsel and advisers before any commercial sale.</p>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr>
+    <tr><td>Safety incident at a customer site</td><td><span class="dot d-l"></span>Low</td><td><span class="dot d-h"></span>High</td><td>Hybrid design, remote ignition, mandatory training, usage agreements and insurance</td></tr>
+    <tr><td>Regulatory delays or licence changes</td><td><span class="dot d-m"></span>Medium</td><td><span class="dot d-h"></span>High</td><td>Early legal counsel, advisory board, begin with Spark stands and low-thrust classes</td></tr>
+    <tr><td>Slow college purchasing cycles</td><td><span class="dot d-h"></span>High</td><td><span class="dot d-m"></span>Medium</td><td>Rental option, grant-linked sales, faculty champions, competition partnerships</td></tr>
+    <tr><td>Component cost or supply swings</td><td><span class="dot d-m"></span>Medium</td><td><span class="dot d-m"></span>Medium</td><td>Local sourcing, two suppliers per critical part, buffer inventory</td></tr>
+    <tr><td>Rental fleet wear, damage or misuse</td><td><span class="dot d-m"></span>Medium</td><td><span class="dot d-m"></span>Medium</td><td>Inspection and refurbishment after each rental, refundable deposit, usage agreement and trained operators</td></tr>
+    <tr><td>Technical delays in Orion</td><td><span class="dot d-m"></span>Medium</td><td><span class="dot d-m"></span>Medium</td><td>Staged development on Vega learnings, faculty co-development</td></tr>
+  </table></div>
+</section>
+
+<!-- Conclusion -->
+<div class="closing reveal" id="close">
+  <h2>Every aerospace student should fire a real engine before they graduate.</h2>
+  <p>Astra Thrust turns propulsion from a lecture into a lab: safe hardware, trained faculty and a business that grows with every campus we serve.</p>
+  <a class="btn light" href="#top">Back to the top</a>
+</div>
+
+<footer>
+  <div class="row">
+    <div><b>Astra Thrust Labs</b><br>Business summary · Métier Projet preliminary round</div>
+    <div>Submitted by <b data-fill="names">Ishan Malviya</b><br><span data-fill="school">Physics Wallah</span></div>
+  </div>
+</footer>
+
+</div>
+</main>
+
+<script>
+/* ===== Edit these two lines before submitting ===== */
+const REPORT = { school: "Physics Wallah", names: "Ishan Malviya" };
+
+
+/* ===== Rocket-engine illustrations (original vector art, generated here) ===== */
+function engineMarkup(o) {
+  const { tank = true, flame = true } = o || {};
+  let s = '';
+  if (tank) {
+    s += '<rect x="-220" y="-50" width="220" height="100" rx="18" fill="url(#g-metal)" stroke="#8d96a6"/>';
+    [-190, -132, -74].forEach(x => s += `<rect x="${x}" y="-50" width="7" height="100" fill="#aab3c2" opacity=".8"/>`);
+    s += '<circle cx="-110" cy="0" r="9" fill="#1a73e8"/><circle cx="-110" cy="0" r="3.5" fill="#fff"/>';
+  }
+  s += '<rect x="0" y="-42" width="40" height="84" rx="8" fill="#2b3140"/><rect x="10" y="-6" width="22" height="12" rx="4" fill="#1a73e8"/>';
+  s += '<rect x="40" y="-40" width="150" height="80" fill="url(#g-metal)" stroke="#8d96a6"/>';
+  for (let x = 64; x <= 168; x += 21) s += `<rect x="${x}" y="-40" width="5" height="80" fill="#aab3c2" opacity=".75"/>`;
+  s += '<rect x="38" y="-50" width="10" height="100" rx="3" fill="#4a5366"/><rect x="182" y="-50" width="10" height="100" rx="3" fill="#4a5366"/>';
+  s += '<path d="M190 -40 C205 -40 215 -17 232 -17 C275 -17 330 -48 380 -64 L380 64 C330 48 275 17 232 17 C215 17 205 40 190 40 Z" fill="url(#g-copper)" stroke="#6e4128" stroke-width="1.5"/>';
+  [[262, 26], [302, 38], [342, 51]].forEach(([x, hh]) => s += `<path d="M${x} ${-hh} V${hh}" stroke="#6e4128" stroke-opacity=".35" stroke-width="2" fill="none"/>`);
+  s += '<ellipse cx="380" cy="0" rx="9" ry="64" fill="#2a1a10" stroke="#6e4128" stroke-width="1.5"/>';
+  if (flame) {
+    s += '<g class="flame"><path d="M382 -62 C470 -50 600 -26 770 -10 L770 10 C600 26 470 50 382 62 Z" fill="url(#g-glow)" filter="url(#f-blur)"/>' +
+      '<path d="M382 -44 C450 -34 540 -16 650 -6 L650 6 C540 16 450 34 382 44 Z" fill="url(#g-flame)"/>' +
+      '<path d="M382 -22 C430 -16 480 -8 540 -3 L540 3 C480 8 430 16 382 22 Z" fill="url(#g-core)"/>' +
+      '<ellipse cx="450" cy="0" rx="20" ry="9" fill="#fff" opacity=".85"/><ellipse cx="520" cy="0" rx="15" ry="6.5" fill="#fff" opacity=".75"/><ellipse cx="585" cy="0" rx="11" ry="4.5" fill="#fff" opacity=".65"/></g>';
+  }
+  return s;
+}
+const G = (t, o) => `<g transform="${t}">${engineMarkup(o)}</g>`;
+const wrap = (inner, vb) => `<svg viewBox="${vb || '0 0 400 230'}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${inner}</svg>`;
+const lab = (x, y, text, toY) => `<g class="lbl"><text x="${x}" y="${y}">${text}</text><path d="M${x} ${y + 7} V${toY}" stroke="#9aa0a6" stroke-width="1"/><circle cx="${x}" cy="${toY}" r="2.6" fill="#5f6368"/></g>`;
+
+function heroScene() {
+  let s = '<ellipse cx="500" cy="312" rx="470" ry="9" fill="#0d0e10" opacity=".06"/>';
+  s += '<rect x="56" y="286" width="700" height="14" rx="7" fill="url(#g-metal-d)"/>';
+  s += '<rect x="6" y="70" width="18" height="230" rx="5" fill="url(#g-metal-d)"/>';
+  s += '<rect x="24" y="150" width="30" height="36" rx="5" fill="#2b3140"/><circle cx="39" cy="168" r="5" fill="#34a853"/>';
+  s += '<rect x="54" y="164" width="48" height="8" fill="#8d96a6"/>';
+  s += '<polygon points="150,286 250,286 236,213 164,213" fill="url(#g-metal-d)"/><rect x="158" y="207" width="84" height="8" rx="4" fill="#4a5366"/>';
+  s += '<polygon points="350,286 450,286 438,204 362,204" fill="url(#g-metal-d)"/><rect x="358" y="198" width="84" height="8" rx="4" fill="#4a5366"/>';
+  s += G('translate(300,168) scale(.9)', { tank: true, flame: true });
+  s += lab(39, 44, 'Load cell', 148) + lab(200, 44, 'Oxidiser tank', 121) + lab(405, 44, 'Combustion chamber', 130) + lab(560, 44, 'Nozzle', 134) + lab(840, 44, 'Exhaust plume', 143) + lab(318, 84, 'Injector', 128);
+  return s;
+}
+function sparkScene(panel) {
+  let s = panel ? '<rect x="38" y="22" width="324" height="186" rx="18" fill="#fff" opacity=".85"/>' : '';
+  s += '<rect x="56" y="186" width="290" height="10" rx="5" fill="url(#g-metal-d)"/><rect x="48" y="70" width="12" height="126" rx="4" fill="url(#g-metal-d)"/>';
+  s += '<rect x="60" y="108" width="22" height="34" rx="4" fill="#2b3140"/><circle cx="71" cy="125" r="3.5" fill="#34a853"/><rect x="82" y="122" width="22" height="6" fill="#8d96a6"/>';
+  s += '<polygon points="128,186 178,186 173,143 133,143" fill="url(#g-metal-d)"/><rect x="130" y="138" width="46" height="6" rx="3" fill="#4a5366"/>';
+  s += G('translate(104,125) scale(.42)', { tank: false, flame: false });
+  s += '<rect x="280" y="56" width="72" height="56" rx="8" fill="#fff" stroke="#cfd5df" stroke-width="2"/><polyline points="288,100 300,90 312,94 324,76 336,82 344,70" fill="none" stroke="#1a73e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>';
+  s += '<rect x="312" y="112" width="8" height="74" fill="#8d96a6"/><rect x="296" y="182" width="40" height="6" rx="3" fill="#5d6678"/>';
+  s += '<path d="M71 142 C75 176 250 180 316 140" fill="none" stroke="#5f6368" stroke-opacity=".5" stroke-width="2"/>';
+  return wrap(s);
+}
+function vegaScene() {
+  return wrap('<circle cx="200" cy="105" r="92" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="2"/><circle cx="200" cy="105" r="62" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="2"/>' + G('translate(200,12) rotate(90) scale(.46)', { tank: false, flame: true }));
+}
+function orionScene() {
+  let s = '';
+  [[40, 30], [90, 60], [150, 22], [230, 40], [310, 26], [350, 66], [60, 196], [330, 190], [380, 150]].forEach(([x, y], i) => s += `<circle cx="${x}" cy="${y}" r="${i % 3 ? 1.2 : 1.8}" fill="#fff" opacity=".6"/>`);
+  s += '<rect x="36" y="160" width="330" height="7" rx="3.5" fill="#3a4256"/>';
+  s += '<polygon points="120,160 170,160 162,142 128,142" fill="#3a4256"/><polygon points="215,160 265,160 257,138 223,138" fill="#3a4256"/>';
+  s += G('translate(112,118) scale(.34)', { tank: true, flame: true });
+  return wrap(s);
+}
+function bayScene() {
+  let s = '<rect x="40" y="40" width="320" height="150" rx="14" fill="#10142200" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><rect x="40" y="40" width="320" height="150" rx="14" fill="#0b0d14" opacity=".72"/>';
+  s += '<rect x="40" y="178" width="320" height="12" fill="#ffc400" opacity=".85"/>';
+  for (let x = 50; x < 350; x += 30) s += `<path d="M${x} 190 l10 -12" stroke="#0b0d14" stroke-width="7"/>`;
+  s += '<rect x="64" y="154" width="250" height="8" rx="4" fill="#3a4256"/>';
+  s += G('translate(110,118) scale(.3)', { tank: false, flame: true });
+  return wrap(s);
+}
+function bpScene() {
+  return wrap('<rect width="400" height="230" fill="url(#p-grid)"/>' + G('translate(80,106) scale(.56)', { tank: false, flame: false }) + '<path d="M80 168 H293 M80 162 V174 M293 162 V174" stroke="#1a73e8" stroke-width="1.6" fill="none"/>');
+}
+function netScene() {
+  const c = [200, 115], pts = [[110, 70], [290, 70], [88, 160], [312, 160], [200, 190], [200, 40]];
+  let s = pts.map(([x, y]) => `<path d="M${c[0]} ${c[1]} L${x} ${y}" stroke="#fff" stroke-width="2" opacity=".7"/>`).join('');
+  s += pts.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" fill="#fff"/>`).join('');
+  s += `<circle cx="${c[0]}" cy="${c[1]}" r="15" fill="#fff"/><circle cx="${c[0]}" cy="${c[1]}" r="7" fill="#d84315"/>`;
+  return wrap(s);
+}
+const ART = { spark: () => sparkScene(false), stand: () => sparkScene(true), vega: vegaScene, kit: vegaScene, orion: orionScene, bay: bayScene, bp: bpScene, net: netScene };
+document.getElementById('heroArt').innerHTML = heroScene();
+document.querySelectorAll('[data-art]').forEach(el => el.insertAdjacentHTML('beforeend', ART[el.dataset.art]()));
+
+document.querySelectorAll('[data-fill]').forEach(el => el.textContent = REPORT[el.dataset.fill]);
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* highlight rail arrows */
+const rail = document.getElementById('rail');
+document.getElementById('next').onclick = () => rail.scrollBy({ left: 360, behavior: 'smooth' });
+document.getElementById('prev').onclick = () => rail.scrollBy({ left: -360, behavior: 'smooth' });
+
+/* sticky tabs: active section */
+const tabLinks = [...document.querySelectorAll('#tabs a')];
+const secs = tabLinks.map(a => document.querySelector(a.getAttribute('href')));
+const spy = () => {
+  const y = window.scrollY + window.innerHeight * 0.35; let cur = -1;
+  secs.forEach((s, i) => { if (s && s.offsetTop <= y) cur = i; });
+  tabLinks.forEach((a, i) => a.classList.toggle('on', i === cur));
+  if (cur >= 0) { const a = tabLinks[cur], t = document.getElementById('tabs'); t.scrollTo({ left: a.offsetLeft - t.clientWidth / 2 + a.clientWidth / 2, behavior: 'smooth' }); }
+};
+addEventListener('scroll', spy, { passive: true }); spy();
+
+/* hero parallax */
+const hero = document.querySelector('.hero'), rib = document.querySelector('.engine-art');
+hero.addEventListener('mousemove', e => {
+  const r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+  rib.style.transform = `translate(${x * -12}px,${y * -6}px)`;
+});
+
+/* ===== Financial model ===== */
+const BASE_NEW = [6, 14, 25, 35, 45];
+const OPEX = [60, 90, 130, 170, 220];
+const AMC_FEE = 1.2, AMC_GM = 0.7, TAX = 0.25;
+const RENT_YEAR = 3.6, RENT_GM = 0.6; /* ~₹0.6 L a month for ~6 months per renting college per year */
+const P = { aov: 12, gm: .45, ret: .8, mult: 1, rent: .25 };
+
+function model(p) {
+  let cb = 0, cr = 0; const rows = [];
+  for (let i = 0; i < 5; i++) {
+    const n = Math.round(BASE_NEW[i] * p.mult), rn = Math.round(n * p.rent), by = n - rn;
+    const sup = Math.round(cb * p.ret), act = rn + Math.round(cr * p.ret);
+    const hw = by * p.aov, amc = sup * AMC_FEE, rentRev = act * RENT_YEAR, rev = hw + amc + rentRev;
+    const gp = hw * p.gm + amc * AMC_GM + rentRev * RENT_GM, ebitda = gp - OPEX[i];
+    const pat = ebitda > 0 ? ebitda * (1 - TAX) : ebitda;
+    rows.push({ n, rn, sup, act, hw, amc, rentRev, rev, gp, opex: OPEX[i], ebitda, pat });
+    cb += by; cr += rn;
+  }
+  return { rows, cust: cb + cr };
+}
+const fmtL = v => v.toLocaleString('en-IN', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const fmtCr = v => v >= 100 || v <= -100 ? '₹' + (v / 100).toFixed(1) + ' Cr' : '₹' + v.toFixed(0) + ' L';
+
+function renderModel() {
+  const { rows, cust } = model(P);
+  /* KPIs */
+  const rev5 = rows.reduce((s, r) => s + r.rev, 0);
+  const beIdx = rows.findIndex(r => r.ebitda > 0);
+  let run = 0, trough = 0; rows.forEach(r => { run += r.ebitda; trough = Math.min(trough, run); });
+  const k = { rev5: fmtCr(rev5), ebitda5: fmtCr(rows[4].ebitda), be: beIdx < 0 ? 'Beyond Yr 5' : 'Year ' + (beIdx + 1), trough: fmtCr(trough), cust5: cust + '' };
+  document.querySelectorAll('[data-kpi]').forEach(el => el.textContent = k[el.dataset.kpi]);
+
+  /* table */
+  const line = (label, key, cls = '') => `<tr class="${cls}"><td>${label}</td>${rows.map(r => { const v = r[key]; return `<td class="num ${v < 0 ? 'neg' : ''}">${fmtL(v)}</td>`; }).join('')}</tr>`;
+  const cnt = (label, key) => `<tr><td>${label}</td>${rows.map(r => `<td class="num">${r[key]}</td>`).join('')}</tr>`;
+  document.querySelector('#fin tbody').innerHTML =
+    cnt('New colleges', 'n') + cnt('of which renting', 'rn') + cnt('Retained support clients (buyers)', 'sup') + cnt('Active rental clients', 'act') +
+    line('Hardware revenue', 'hw') + line('Support &amp; consumables revenue', 'amc') + line('Rental revenue (engines &amp; boosters)', 'rentRev') + line('Total revenue', 'rev', 'total') +
+    line('Gross profit', 'gp') + line('Operating costs', 'opex') + line('Operating profit (EBITDA)', 'ebitda', 'total') + line('Profit after tax (simplified)', 'pat', 'total');
+
+  /* chart */
+  const W = 800, H = 340, L = 58, R = 16, T = 22, B = 38;
+  const maxV = Math.max(...rows.map(r => r.rev)) * 1.08;
+  const minV = Math.min(0, ...rows.map(r => r.ebitda)) * 1.2;
+  const y = v => T + (maxV - v) / (maxV - minV) * (H - T - B);
+  let s = '';
+  const ticks = 4;
+  for (let i = 0; i <= ticks; i++) {
+    const v = minV + (maxV - minV) * i / ticks, yy = y(v);
+    s += `<line x1="${L}" x2="${W - R}" y1="${yy}" y2="${yy}" stroke="#e3e5e8"/><text x="${L - 10}" y="${yy + 4}" text-anchor="end" font-size="12" fill="#5f6368" font-family="Inter,sans-serif">${Math.round(v)}</text>`;
+  }
+  s += `<line x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}" stroke="#9aa0a6"/>`;
+  const gw = (W - L - R) / 5, bw = 30;
+  rows.forEach((r, i) => {
+    const cx = L + gw * i + gw / 2;
+    const rx = cx - bw - 4, ex = cx + 4;
+    s += `<rect x="${rx}" y="${y(r.rev)}" width="${bw}" height="${y(0) - y(r.rev)}" rx="6" fill="#1a73e8"><title>Year ${i + 1} revenue ${fmtL(r.rev)} L</title></rect>`;
+    const top = Math.min(y(r.ebitda), y(0)), hgt = Math.abs(y(r.ebitda) - y(0));
+    s += `<rect x="${ex}" y="${top}" width="${bw}" height="${Math.max(hgt, 1)}" rx="6" fill="${r.ebitda >= 0 ? '#188038' : '#d93025'}"><title>Year ${i + 1} operating profit ${fmtL(r.ebitda)} L</title></rect>`;
+    s += `<text x="${cx}" y="${H - 12}" text-anchor="middle" font-size="13" fill="#202124" font-family="Inter,sans-serif">Year ${i + 1}</text>`;
+  });
+  document.getElementById('chart').innerHTML = s;
+}
+[['aov', v => P.aov = +v, v => '₹' + v + ' L', 'o-aov'], ['gm', v => P.gm = v / 100, v => v + '%', 'o-gm'], ['ret', v => P.ret = v / 100, v => v + '%', 'o-ret'], ['mult', v => P.mult = v / 100, v => v + '%', 'o-mult'], ['rent', v => P.rent = v / 100, v => v + '%', 'o-rent']]
+  .forEach(([id, set, show, out]) => {
+    const el = document.getElementById(id);
+    el.addEventListener('input', () => { set(el.value); document.getElementById(out).textContent = show(el.value); renderModel(); });
+  });
+renderModel();
+
+/* ===== Funding donut ===== */
+const uses = [['Test facility & bay', 40, '#0d0e10'], ['Machinery & tooling', 35, '#1a73e8'], ['R&D & certification', 25, '#6aa7ff'], ['Rental fleet & working capital', 25, '#9db7ff'], ['Salaries (first 12 months)', 20, '#3b5bdb'], ['Marketing & admin', 5, '#c8d6f5']];
+(function () {
+  const r = 70, C = 2 * Math.PI * r, tot = uses.reduce((s, u) => s + u[1], 0); let off = 0, svg = '', leg = '';
+  uses.forEach(([n, v, c]) => {
+    const len = v / tot * C;
+    svg += `<circle cx="100" cy="100" r="${r}" fill="none" stroke="${c}" stroke-width="28" stroke-dasharray="${len - 2} ${C - len + 2}" stroke-dashoffset="${-off}" transform="rotate(-90 100 100)"/>`;
+    off += len; leg += `<li><span><i style="background:${c}"></i>${n}</span><b>₹${v} L</b></li>`;
+  });
+  svg += `<text x="100" y="98" text-anchor="middle" font-size="26" font-weight="500" fill="#0d0e10" font-family="Inter,sans-serif">₹1.5 Cr</text><text x="100" y="118" text-anchor="middle" font-size="12" fill="#5f6368" font-family="Inter,sans-serif">estimated need</text>`;
+  document.getElementById('donut').innerHTML = svg; document.getElementById('donut-leg').innerHTML = leg;
+})();
+
+/* ===== Configurator ===== */
+const PKG = {
+  teach: { name: 'Teaching Lab Package', items: [['Spark test stand', 4, 1], ['Vega 500 N engine', 9, 1]], lead: '10 weeks', note: 'Includes faculty training, lab manual and syllabus-mapped experiments.' },
+  comp: { name: 'Competition Team Package', items: [['Spark test stand', 4, 1], ['Vega 500 N engine', 9, 1], ['Tuning & nozzle optimisation support', 3, 0]], lead: '10 weeks', note: 'Includes team safety training and event-day support.' },
+  res: { name: 'Research Lab Package', items: [['Spark test stand', 4, 1], ['Orion 5 kN-class engine', 35, 1], ['Custom instrumentation', 8, 0]], lead: '16 weeks', note: 'Co-configured with your faculty; includes a data-analysis toolkit.' }
+};
+let purpose = 'teach', mode = 'buy';
+const RENT_RATE = 0.05; /* rent per month = 5% of purchase price */
+function renderConfig() {
+  const b = +document.getElementById('c-budget').value, p = PKG[purpose];
+  document.getElementById('c-budget-v').textContent = '₹' + b + ' L';
+  const total = p.items.reduce((s, i) => s + i[1], 0);
+  const monthly = p.items.filter(i => i[2]).reduce((s, i) => s + i[1] * RENT_RATE, 0);
+  const once = p.items.filter(i => !i[2]).reduce((s, i) => s + i[1], 0);
+  const cost = m => (monthly * m + once).toFixed(1);
+  const td = 'style="padding-left:0"', tr = 'style="padding-right:0"';
+  let html;
+  if (mode === 'buy') {
+    const fits = b >= total;
+    html = `<span class="badge ${fits ? 'ok' : 'lease'}">${fits ? 'Fits your budget' : 'Over budget: renting may suit you'}</span>
+      <div class="rt">${p.name}</div>
+      <table style="min-width:0;font-size:16px">${p.items.map(i => `<tr><td ${td}>${i[0]}</td><td class="num" ${tr}>₹${i[1]} L</td></tr>`).join('')}
+      <tr class="total"><td ${td}>Package total</td><td class="num" ${tr}>₹${total} L</td></tr></table>
+      <p class="dim" style="font-size:15px;margin-top:10px">${p.note}</p>
+      <p style="margin-top:6px;font-size:16px"><b>Delivery:</b> target about ${p.lead}</p>
+      <p style="font-size:16px"><b>Prefer not to buy?</b> Rent the hardware for about ₹${monthly.toFixed(2)} L per month.</p>`;
+  } else {
+    const months = Math.max(0, Math.floor((b - once) / monthly));
+    const fits = months >= 6;
+    const badge = fits ? 'Budget covers 6+ months of rent' : months >= 1 ? `Budget covers about ${months} month${months > 1 ? 's' : ''} of rent` : 'Budget is too low to rent this package';
+    html = `<span class="badge ${fits ? 'ok' : 'lease'}">${badge}</span>
+      <div class="rt">${p.name} (rental)</div>
+      <table style="min-width:0;font-size:16px">${p.items.map(i => `<tr><td ${td}>${i[0]}</td><td class="num" ${tr}>${i[2] ? '₹' + (i[1] * RENT_RATE).toFixed(2) + ' L / month' : '₹' + i[1] + ' L one-time'}</td></tr>`).join('')}
+      <tr class="total"><td ${td}>Monthly rent</td><td class="num" ${tr}>₹${monthly.toFixed(2)} L</td></tr></table>
+      <p style="margin-top:10px;font-size:16px"><b>Total cost:</b> 3 months ₹${cost(3)} L · 6 months ₹${cost(6)} L · 12 months ₹${cost(12)} L</p>
+      <p class="dim" style="font-size:15px">Minimum rental 3 months. Engines, boosters and stands are inspected and refurbished between rentals.</p>
+      <p class="dim" style="font-size:15px">${p.note}</p>`;
+  }
+  document.getElementById('c-result').innerHTML = html;
+}
+[['c-purpose', v => purpose = v], ['c-mode', v => mode = v]].forEach(([id, set]) => {
+  document.querySelectorAll('#' + id + ' .chip').forEach(c => c.onclick = () => {
+    document.querySelectorAll('#' + id + ' .chip').forEach(x => x.classList.remove('on')); c.classList.add('on'); set(c.dataset.v); renderConfig();
+  });
+});
+document.getElementById('c-budget').addEventListener('input', renderConfig);
+renderConfig();
+</script>
+</body>
+</html>
